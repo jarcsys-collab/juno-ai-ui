@@ -117,7 +117,7 @@ window.HomeController = {
  
 },
  
-    addUserMessage(message) {
+  addUserMessage(message) {
  
     const history = document.getElementById("chat-history");
     if (!history) return;
@@ -125,23 +125,6 @@ window.HomeController = {
     history.innerHTML += `
       <div class="chat-row user">
         <div class="chat-bubble user">
-          ${marked.parse(message)}
-        </div>
-      </div>
-    `;
- 
-    history.scrollTop = history.scrollHeight;
- 
-  },
- 
-  addAssistantMessage(message) {
- 
-    const history = document.getElementById("chat-history");
-    if (!history) return;
- 
-    history.innerHTML += `
-      <div class="chat-row assistant">
-        <div class="chat-bubble assistant">
           ${message}
         </div>
       </div>
@@ -149,7 +132,27 @@ window.HomeController = {
  
     history.scrollTop = history.scrollHeight;
  
-  },
+},
+ 
+ addAssistantMessage(message) {
+ 
+    const history = document.getElementById("chat-history");
+    if (!history) return;
+ 
+    // Convert Markdown into HTML
+    const html = marked.parse(message);
+ 
+    history.innerHTML += `
+      <div class="chat-row assistant">
+        <div class="chat-bubble assistant markdown-body">
+          ${html}
+        </div>
+      </div>
+    `;
+ 
+    history.scrollTop = history.scrollHeight;
+ 
+},
  
   wireFilesPanel() {
     const filesToggle = document.getElementById('files-toggle');
