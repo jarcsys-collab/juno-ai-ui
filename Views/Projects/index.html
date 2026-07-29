@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Juno — Projects</title>
+<title>Juno — Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../css/base.css">
@@ -11,9 +11,9 @@
 <script src="../../Controllers/themeController.js"></script>
 </head>
 <body>
-
+ 
 <div class="app-shell">
-
+ 
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <div class="sidebar-logo">Juno</div>
@@ -22,33 +22,33 @@
         <button class="icon-btn-top" type="button" aria-label="Sidebar layout"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M9 4v16" stroke="currentColor" stroke-width="1.6"/></svg></button>
       </div>
     </div>
-
+ 
     <nav class="sidebar-nav">
-      <a class="sidebar-item" href="../Home/index.html">
+      <button class="sidebar-item-active" type="button">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex:none"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
         <span>New chat</span>
-      </a>
-      <button class="sidebar-item-active" type="button">
+      </button>
+      <a class="sidebar-item" href="../Projects/index.html">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex:none"><path d="M3 8a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
         <span>Projects</span>
-      </button>
+      </a>
       <button class="sidebar-item" type="button">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex:none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5V12l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         <span>Scheduled</span>
       </button>
     </nav>
-
+ 
     <div class="sidebar-label">RECENTS</div>
     <div id="sidebar-recents" style="display:flex;flex-direction:column;gap:2px;margin-bottom:8px"></div>
     <div id="sidebar-recent-chats" style="display:flex;flex-direction:column;gap:1px"></div>
-
+ 
     <div class="sidebar-spacer"></div>
-
+ 
     <div class="upgrade-card">
       <div class="upgrade-card-title">Upgrade to unlock more</div>
       <div class="upgrade-card-desc">Access higher limits, Pro models, and more.</div>
     </div>
-
+ 
     <div class="profile-row">
       <button class="profile-btn" id="profile-btn" type="button">
         <div class="profile-avatar"></div>
@@ -68,46 +68,93 @@
       </div>
     </div>
   </aside>
-
-  <main style="flex:1;display:flex;flex-direction:column;min-width:0;overflow-y:auto">
-    <div class="juno-content" style="padding-top:36px;padding-bottom:40px">
-
-      <div class="page-header">
-        <div class="page-title">Projects</div>
-        <div class="page-header-actions">
-          <div class="sort-pill">
-            <span>Sort by</span>
-            <span>Last updated</span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style="opacity:.6"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          </div>
-          <button class="new-project-btn" type="button">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            New project
+ 
+  <main class="main-wrap">
+    <div class="topbar">
+      <div style="flex:1"></div>
+      <button class="icon-btn" id="files-toggle" type="button" aria-label="Open files panel"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    </div>
+ 
+<div style="flex:1;min-width:0;overflow-y:auto;display:flex;flex-direction:column">
+ 
+    <div
+        id="chat-history"
+        class="juno-content"
+        style="
+            flex:1;
+            padding-top:32px;
+            padding-bottom:20px;
+            overflow-y:auto;
+            display:flex;
+            flex-direction:column;
+            gap:18px;
+        "
+    >
+ 
+        <div class="section-label">
+            Start with an agent
+        </div>
+ 
+        <div class="tiles-grid" id="agent-tiles"></div>
+ 
+    </div>
+ 
+</div>
+ 
+    <div class="juno-content" style="flex:none;padding-top:8px;padding-bottom:24px">
+      <div class="composer">
+        <textarea
+    id="chat-input"
+    placeholder="Ask anything..."
+    rows="1"
+></textarea>
+        <div class="composer-controls">
+          <button class="icon-btn-30" type="button" aria-label="Add"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+          <button class="icon-btn-30" type="button" aria-label="Tools"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="7" height="7" rx="1.3" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.3" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="15" width="7" height="7" rx="1.3" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="15" width="7" height="7" rx="1.3" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <button class="icon-btn-30" type="button" aria-label="Voice"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zM6 11v1a6 6 0 0 0 12 0v-1M12 18v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+          <div class="model-pill">Juno 2.5</div>
+          <div class="composer-spacer"></div>
+          <button class="send-btn" id="send-btn" type="button" aria-label="Send message">
+            <svg class="send-arrow" width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M6 11l6-6 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="send-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
           </button>
         </div>
       </div>
-
-      <div class="search-bar">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex:none;opacity:.6"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-        <input id="project-search" placeholder="Search projects..." autocomplete="off">
-      </div>
-
-      <div class="banner" id="projects-banner">
-        <div class="new-badge">New</div>
-        <div class="banner-text">Projects made in Chat and Cowork are now all in one place.</div>
-        <button class="banner-close" id="banner-close" type="button" aria-label="Dismiss"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
-      </div>
-
-      <div class="projects-grid" id="projects-grid"></div>
-
     </div>
   </main>
-
+ 
+  <aside class="rpanel files" id="files-panel" style="display:none">
+    <div class="rpanel-header">
+      <div class="rpanel-title">Files</div>
+      <button class="rpanel-close" id="files-close" type="button" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="rpanel-empty">
+      <div class="rpanel-empty-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+      <div class="rpanel-empty-title">No files yet</div>
+      <div class="rpanel-empty-desc">Files created during this conversation will appear here.</div>
+    </div>
+  </aside>
+ 
+  <aside class="rpanel pdf" id="pdf-panel" style="display:none">
+    <div class="rpanel-header pdf-header">
+      <div class="rpanel-title">PDF Preview</div>
+      <div class="pdf-header-actions">
+        <button class="pdf-icon-btn" type="button" aria-label="Download"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="pdf-icon-btn" type="button" aria-label="Fullscreen"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="pdf-icon-btn" type="button" aria-label="Close" onclick="HomeController.closePdfPanel()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+      </div>
+    </div>
+    <div class="pdf-body"><div class="pdf-answer">Answer</div></div>
+  </aside>
+ 
 </div>
-
+ 
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="../../Models/sidebarModel.js"></script>
-<script src="../../Models/projectsModel.js"></script>
+<script src="../../Models/agentsModel.js"></script>
 <script src="../../Controllers/sidebarController.js"></script>
-<script src="../../Controllers/projectsController.js"></script>
+<script src="../../Controllers/homeController.js"></script>
 </body>
 </html>
+ 
+ 
