@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juno v22 - Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/base.css">
+<link rel="stylesheet" href="../../css/components.css">
+<script src="../../Controllers/themeController.js"></script>
+<script src="../../Controllers/authController.js"></script>
+</head>
+<body>
+ 
+<div class="app-shell">
+  <button class="mobile-sidebar-backdrop" id="mobile-sidebar-backdrop" type="button" aria-label="Close navigation" tabindex="-1"></button>
+ 
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">Juno</div>
+      <div class="sidebar-header-icons">
+        <button class="icon-btn-top sidebar-search-toggle" type="button" aria-label="Search conversations" aria-expanded="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+        <button class="icon-btn-top" id="sidebar-collapse" type="button" aria-label="Collapse sidebar" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.6"/><path d="M9 4v16" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      </div>
+    </div>
+    <div class="sidebar-search-panel" id="sidebar-search-panel">
+      <div class="sidebar-search-field">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <input id="sidebar-search-input" type="search" placeholder="Search conversations">
+      </div>
+      <div class="sidebar-search-results" id="sidebar-search-results"></div>
+    </div>
+ 
+    <nav class="sidebar-nav">
+      <button class="sidebar-item-active" id="new-chat-btn" type="button">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex:none"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <span>New chat</span>
+      </button>
+      <a class="sidebar-item" href="../Projects/index.html">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex:none"><path d="M3 8a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <span>Projects</span>
+      </a>
+    </nav>
+ 
+    <div class="sidebar-label">RECENTS</div>
+    <div id="sidebar-recents" style="display:flex;flex-direction:column;gap:2px;margin-bottom:8px"></div>
+    <div id="sidebar-recent-chats" style="display:flex;flex-direction:column;gap:1px"></div>
+ 
+    <div class="sidebar-spacer"></div>
+ 
+    <div class="profile-row">
+      <button class="profile-btn" id="profile-btn" type="button">
+        <div class="profile-avatar"></div>
+        <span class="profile-email"></span>
+      </button>
+      <div class="profile-menu" id="profile-menu">
+        <div class="profile-menu-email"></div>
+        <button class="menu-item" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg><span id="theme-toggle-label">Settings: Light mode</span></button>
+        <button class="menu-item" id="language-btn" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z" stroke="currentColor" stroke-width="1.3"/></svg><span id="language-label">Language: English</span></button>
+        <button class="menu-item" id="settings-btn" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 15.5A3.5 3.5 0 1 0 12 8a3.5 3.5 0 0 0 0 7.5z" stroke="currentColor" stroke-width="1.5"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.5-2.4 1a7.8 7.8 0 0 0-2-1.1L14.2 3h-4.4l-.4 2.7a7.8 7.8 0 0 0-2 1.1l-2.4-1-2 3.5 2 1.5A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.5 2 3.5 2.4-1a7.8 7.8 0 0 0 2 1.1l.4 2.7h4.4l.4-2.7a7.8 7.8 0 0 0 2-1.1l2.4 1 2-3.5-2-1.5c.1-.4.1-.8.1-1.2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg><span>Settings</span></button>
+        <button class="menu-item" id="help-btn" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M9.5 9a2.5 2.5 0 0 1 5 0c0 1.5-2 1.8-2 3.5M12 17h.01" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg><span>Get help</span></button>
+        <div class="menu-divider"></div>
+        <button class="menu-item" id="apps-btn" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 4v12M7 12l5 5 5-5M4 20h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Get apps and extensions</span></button>
+        <button class="menu-item" id="learn-btn" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 8h.01M11 12h1v5h1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Learn more</span></button>
+        <div class="menu-divider"></div>
+        <button class="menu-item" id="logout-btn" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Log out</span></button>
+      </div>
+    </div>
+  </aside>
+ 
+  <main class="main-wrap">
+    <div class="topbar">
+      <button class="icon-btn mobile-menu-toggle" id="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-controls="sidebar" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+      <div class="chat-title-group" id="chat-title-group">
+        <button class="chat-title-btn" id="chat-title-btn" type="button" aria-label="Rename current conversation">
+          <span id="active-chat-title">New chat</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </button>
+        <span id="active-chat-meta">Ready</span>
+      </div>
+      <div class="chat-search-wrap" id="chat-search-wrap">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <input id="chat-search-input" type="search" placeholder="Search this chat">
+        <span id="chat-search-count">0</span>
+      </div>
+      <button class="icon-btn" id="copy-chat-link" type="button" aria-label="Copy conversation link"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1M14 11a5 5 0 0 0-7.1 0l-2 2A5 5 0 0 0 12 20.1l1.1-1.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button class="icon-btn" id="files-toggle" type="button" aria-label="Open files panel"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="accuracy-notice" role="note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 11v5M12 8h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <span>Juno can make mistakes. Double-check important information and sources.</span>
+    </div>
+ 
+<div class="chat-workspace">
+
+    <section class="welcome-layer" id="welcome-layer" aria-label="Welcome to Juno">
+      <div class="welcome-inner">
+        <h1>Welcome to Juno!</h1>
+        <div class="welcome-composer">
+          <input id="welcome-photo-input" type="file" accept="image/*" multiple hidden>
+          <input id="welcome-file-input" type="file" multiple hidden>
+          <input id="welcome-folder-input" type="file" webkitdirectory directory multiple hidden>
+          <div class="attach-menu" id="welcome-attach-menu" role="menu" aria-label="Attachment options">
+            <button type="button" data-attach-action="image" role="menuitem">Upload photo/image</button>
+            <button type="button" data-attach-action="file" role="menuitem">Upload file</button>
+            <button type="button" data-attach-action="folder" role="menuitem">Upload folder</button>
+          </div>
+          <button class="welcome-icon-btn" id="welcome-add-btn" type="button" aria-label="Add attachment" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+          <textarea id="welcome-input" placeholder="Ask Juno..." rows="1"></textarea>
+          <button class="welcome-icon-btn" id="welcome-tools-btn" type="button" aria-label="Tools"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="7" height="7" rx="1.3" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.3" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="15" width="7" height="7" rx="1.3" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="15" width="7" height="7" rx="1.3" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <button class="welcome-icon-btn" id="welcome-voice-btn" type="button" aria-label="Speak to Juno"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zM6 11v1a6 6 0 0 0 12 0v-1M12 18v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          <div class="model-pill welcome-model-pill">Juno 2.5</div>
+          <button class="welcome-icon-btn" id="welcome-send-btn" type="button" aria-label="Send message"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <div class="photo-preview-tray welcome-tray" id="welcome-preview-tray" aria-live="polite"></div>
+        <div class="quick-prompts" aria-label="Quick start prompts">
+          <button type="button" data-quick-prompt="Summarize this PDF into key takeaways.">Summarize a PDF</button>
+          <button type="button" data-quick-prompt="Draft a clear professional email about ">Draft an email</button>
+          <button type="button" data-quick-prompt="Analyze this data and explain the trends.">Analyze data</button>
+          <button type="button" data-quick-prompt="Plan a workflow with clear steps, owners, and timeline.">Plan workflow</button>
+        </div>
+      </div>
+    </section>
+ 
+    <div
+        id="chat-history"
+        class="juno-content"
+        style="
+            flex:1;
+            padding-top:32px;
+            padding-bottom:20px;
+            overflow-y:auto;
+            display:flex;
+            flex-direction:column;
+            gap:18px;
+        "
+    >
+ 
+    </div>
+    <div class="chat-jump-controls is-hidden" id="chat-jump-controls">
+      <button type="button" id="jump-latest" aria-label="Go to latest conversation" title="Go to latest conversation">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+ 
+</div>
+ 
+    <div class="juno-content" id="main-composer-wrap" style="flex:none;padding-top:8px;padding-bottom:24px">
+      <div class="composer">
+        <input id="photo-input" type="file" accept="image/*" multiple hidden>
+        <input id="file-input" type="file" multiple hidden>
+        <input id="folder-input" type="file" webkitdirectory directory multiple hidden>
+        <div class="attach-menu" id="attach-menu" role="menu" aria-label="Attachment options">
+          <button type="button" data-attach-action="image" role="menuitem">Upload photo/image</button>
+          <button type="button" data-attach-action="file" role="menuitem">Upload file</button>
+          <button type="button" data-attach-action="folder" role="menuitem">Upload folder</button>
+        </div>
+        <div class="photo-preview-tray" id="photo-preview-tray" aria-live="polite"></div>
+        <textarea
+    id="chat-input"
+    placeholder="Ask Juno..."
+    rows="1"
+></textarea>
+        <div class="composer-controls">
+          <button class="icon-btn-30" id="photo-add-btn" type="button" aria-label="Add attachment" aria-expanded="false"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+          <button class="icon-btn-30" type="button" aria-label="Tools"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="7" height="7" rx="1.3" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="4" width="7" height="7" rx="1.3" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="15" width="7" height="7" rx="1.3" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="15" width="7" height="7" rx="1.3" stroke="currentColor" stroke-width="1.5"/></svg></button>
+          <button class="icon-btn-30" id="voice-btn" type="button" aria-label="Voice"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zM6 11v1a6 6 0 0 0 12 0v-1M12 18v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+          <div class="model-pill">Juno 2.5</div>
+          <div class="composer-spacer"></div>
+          <button class="send-btn" id="send-btn" type="button" aria-label="Send message">
+            <svg class="send-arrow" width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M6 11l6-6 6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="send-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+ 
+  <aside class="rpanel files" id="files-panel" style="display:none">
+    <div class="rpanel-header">
+      <div class="rpanel-title">Files</div>
+      <button class="rpanel-close" id="files-close" type="button" aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="pinned-files" id="pinned-files"></div>
+    <div class="files-list" id="files-list"></div>
+    <div class="rpanel-empty" id="files-empty">
+      <div class="rpanel-empty-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+      <div class="rpanel-empty-title">No files yet</div>
+      <div class="rpanel-empty-desc">Upload a file to preview, pin, or attach it to the current chat.</div>
+      <button class="empty-action-btn" id="files-empty-upload" type="button">Upload file</button>
+    </div>
+  </aside>
+ 
+  <aside class="rpanel pdf" id="pdf-panel" style="display:none">
+    <div class="rpanel-header pdf-header">
+      <div class="rpanel-title">PDF Preview</div>
+      <div class="pdf-header-actions">
+        <button class="pdf-icon-btn" type="button" aria-label="Download"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="pdf-icon-btn" type="button" aria-label="Fullscreen"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="pdf-icon-btn" type="button" aria-label="Close" onclick="HomeController.closePdfPanel()"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+      </div>
+    </div>
+    <div class="pdf-body" id="pdf-body"><div class="pdf-answer">PDF Preview</div></div>
+  </aside>
+ 
+</div>
+ 
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="../../Models/sidebarModel.js"></script>
+<script src="../../Models/agentsModel.js"></script>
+<script src="../../Controllers/sidebarController.js"></script>
+<script src="../../Controllers/homeController.js"></script>
+</body>
+</html>
+ 
+ 

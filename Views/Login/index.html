@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juno v22 - Log in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../css/base.css">
+<link rel="stylesheet" href="../../css/components.css">
+<script src="../../Controllers/themeController.js"></script>
+</head>
+<body>
+  <main class="login-page">
+    <section class="login-panel" aria-labelledby="login-title">
+      <div class="login-brand">
+        <div class="login-mark">J</div>
+        <span>Juno</span>
+      </div>
+
+      <div class="login-card">
+        <h1 id="login-title">Log in</h1>
+        <p>Welcome back. Enter your details to continue.</p>
+        <form id="login-form" class="login-form">
+          <label for="login-username">Email</label>
+          <input id="login-username" name="username" type="text" autocomplete="username" placeholder="Email address" required>
+
+          <div class="login-label-row">
+            <label for="login-password">Password</label>
+            <button class="login-link" type="button">Forgot password?</button>
+          </div>
+          <div class="login-password-wrap">
+            <input id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Password" required>
+            <button class="login-eye" id="login-eye" type="button" aria-label="Show password">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+          </div>
+
+          <div class="login-options">
+            <label class="login-check">
+              <input type="checkbox">
+              <span>Remember me</span>
+            </label>
+          </div>
+
+          <div class="login-error" id="login-error" role="alert"></div>
+
+          <button class="login-submit" type="submit">Log in</button>
+          <div class="login-connect-space" aria-hidden="true"></div>
+        </form>
+      </div>
+
+      <p class="login-signup">Don't have an account? <a href="#">Sign up</a></p>
+    </section>
+
+    <div class="medtek-watermark" aria-hidden="true">
+      <span class="medtek-mark">M</span>
+      <span>MedTek</span>
+    </div>
+  </main>
+
+<script src="../../Controllers/loginController.js"></script>
+</body>
+</html>
